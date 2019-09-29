@@ -1,4 +1,4 @@
-package kompressori.domain;
+package kompressori.data_structures;
 
 /**
  * Wrapper for holding the created huffman tree and

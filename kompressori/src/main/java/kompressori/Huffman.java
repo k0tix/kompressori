@@ -1,4 +1,6 @@
-package kompressori.domain;
+package kompressori;
+
+import kompressori.data_structures.*;
 
 import java.util.HashMap;
 import java.util.Map;

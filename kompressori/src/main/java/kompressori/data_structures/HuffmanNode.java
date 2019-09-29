@@ -1,4 +1,4 @@
-package kompressori.domain;
+package kompressori.data_structures;
 
 /**
  * Class for the huffman tree

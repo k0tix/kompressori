@@ -1,5 +1,6 @@
-package kompressori.domain;
+package kompressori;
 
+import kompressori.domain.*;
 import java.util.Map;
 import org.junit.Test;
 
