@@ -10,6 +10,8 @@ A file compressor made with java for the tiralabra2019 course.
 
 [Week 3](documentation/weeks/week3.md)
 
+[Week 4](documentation/weeks/week4.md)
+
 ## Documentation
 
 [Specification document](documentation/specification.md)
