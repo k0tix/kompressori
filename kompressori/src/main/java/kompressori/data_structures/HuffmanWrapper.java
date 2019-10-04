@@ -1,10 +1,13 @@
 package kompressori.data_structures;
 
+import java.io.Serializable;
+
 /**
  * Wrapper for holding the created huffman tree and
  * the encoded string
  */
-public class HuffmanWrapper {
+public class HuffmanWrapper implements Serializable {
+    private static final long serialVersionUID = 1L;
     private HuffmanNode tree;
     private String encodedString;
 

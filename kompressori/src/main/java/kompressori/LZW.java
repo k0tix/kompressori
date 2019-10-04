@@ -3,9 +3,11 @@ package kompressori;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LZW {
+public class LZW implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int dictSize;
 
     /**

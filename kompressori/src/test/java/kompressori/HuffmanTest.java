@@ -1,6 +1,6 @@
 package kompressori;
 
-import kompressori.domain.*;
+import kompressori.data_structures.*;
 import java.util.Map;
 import org.junit.Test;
 

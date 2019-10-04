@@ -1,6 +1,8 @@
 package kompressori;
 
 import kompressori.data_structures.*;
+import kompressori.io.FileHandler;
+
 import java.util.*;
 
 public final class App {
@@ -8,15 +10,21 @@ public final class App {
     }
 
     public static void main(String[] args) {
-        System.out.println("Input string: ");
+        System.out.println("Input file: ");
         Scanner s = new Scanner(System.in);
         String input = s.nextLine();
+
+        FileHandler f = new FileHandler();
+        String data = f.readFile(input);
 
         Huffman h = new Huffman();
         LZW lzw = new LZW();
 
-        int[] lempelEncoded = lzw.encode(input);
-        HuffmanWrapper encodedInput = h.encode(input);
+        int[] lempelEncoded = lzw.encode(data);
+        HuffmanWrapper encodedInput = h.encode(data);
+
+        f.writeObjectToFile(lempelEncoded, input + ".kotixlzw");
+        f.writeObjectToFile(encodedInput, input + ".kotixhuffman");
 
         System.out.println("\n" + "...................." + "\n");
         System.out.println("Lempel-Ziv-Welch: ");
