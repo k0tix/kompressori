@@ -1,4 +1,4 @@
-package kompressori.data_structures;
+package kompressori.datastructures;
 
 /**
  * Simple byte array class
@@ -40,6 +40,16 @@ public class ByteArray {
             newArray[i] = this.array[i];
         }
         return newArray;
+    }
+
+    public byte[] toByteArray() {
+        byte[] result = new byte[this.size];
+
+        for (int i = 0; i < this.size; i++) {
+            result[i] = this.array[i];
+        }
+
+        return result;
     }
 
     public void freeArray() {
