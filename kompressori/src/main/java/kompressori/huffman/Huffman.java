@@ -16,7 +16,7 @@ public class Huffman {
      */
     public int[] getFrequencies(byte[] input) {
         int[] freq = new int[256];
-        
+
         for (int i = 0; i < input.length; i++) {
             freq[0xff & input[i]] += 1;
         }
@@ -29,14 +29,12 @@ public class Huffman {
      * @param input
      * @return
      */
-    public HuffmanNode createHuffmanTree(byte[] input) {
-        int[] freq = this.getFrequencies(input);
-
+    public HuffmanNode createHuffmanTree(int[] frequencies) {
         PriorityQueue queue = new PriorityQueue(256);
 
-        for (int i = 0; i < freq.length; i++) {
-            if (freq[i] > 0) {
-                queue.add(new HuffmanNode((byte) i, freq[i], null, null));
+        for (int i = 0; i < frequencies.length; i++) {
+            if (frequencies[i] > 0) {
+                queue.add(new HuffmanNode((byte) i, frequencies[i], null, null));
             }
         }
     
@@ -44,7 +42,7 @@ public class Huffman {
             HuffmanNode right = queue.poll();
             HuffmanNode left = queue.poll();
 
-            HuffmanNode parentNode = new HuffmanNode(left.getFrequency() + right.getFrequency(), left, right);
+            HuffmanNode parentNode = new HuffmanNode((byte) 0, left.getFrequency() + right.getFrequency(), left, right);
             queue.add(parentNode);
         }
 
@@ -52,12 +50,13 @@ public class Huffman {
     }
 
     /**
-     * Encode string input with huffman encoding
-     * @param input
+     * Encode byte array input with huffman encoding
+     * @param byteInput
+     * @param frequencies
      * @return
      */
-    public byte[] encode(byte[] byteInput) {
-        HuffmanNode tree = this.createHuffmanTree(byteInput);
+    public byte[] encode(byte[] byteInput, int[] frequencies) {
+        HuffmanNode tree = this.createHuffmanTree(frequencies);
         BitSet[] codeMap = this.getCodeMap(tree);
 
         ByteArray encodedInput = new ByteArray(16);
@@ -68,7 +67,7 @@ public class Huffman {
         encodedInput.add((byte) offset);
 
         for (int i = 0; i < byteInput.length; i++) {
-            code = codeMap[128 + byteInput[i]];
+            code = codeMap[0xff & byteInput[i]];
             for (int j = 0; j < code.size(); j++) {
                 if (offset < 8) {
                     if (code.get(j)) {
@@ -89,7 +88,16 @@ public class Huffman {
         encodedInput.add(nextByte);
         encodedInput.set(0, (byte) offset);
 
-        return encodedInput.toByteArray();
+        return encodedInput.array();
+    }
+
+    /**
+     * Encode byte array input with huffman encoding
+     * @param input
+     * @return
+     */
+    public byte[] encode(byte[] byteInput) {
+        return this.encode(byteInput, this.getFrequencies(byteInput));
     }
 
     /**
@@ -113,7 +121,7 @@ public class Huffman {
             }
         }
 
-        return result.toByteArray();
+        return result.array();
     }
 
     /**
@@ -123,12 +131,8 @@ public class Huffman {
      * @param codeMap
      */
     private void walk(HuffmanNode node, BitSet code, BitSet[] codeMap) {
-        if (node == null) {
-            return;
-        } 
-        
         if (node.isLeafNode()) {
-            codeMap[128 + node.getCharacter()] = (BitSet) code.clone();
+            codeMap[0xff & node.getCharacter()] = code.clone();
         } else {
             int index = code.size();
             code.set(index, false);

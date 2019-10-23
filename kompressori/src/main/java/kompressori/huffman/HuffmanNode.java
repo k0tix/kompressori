@@ -21,18 +21,6 @@ public class HuffmanNode {
         this.right = right;
     }
 
-    public HuffmanNode(byte character, HuffmanNode left, HuffmanNode right) {
-        this(character, 0, left, right);
-    }
-
-    public HuffmanNode(byte character, int frequency) {
-        this(character, frequency, null, null);
-    }
-
-    public HuffmanNode(byte c) {
-        this(c, 0);
-    }
-
     public byte getCharacter() {
         return this.character;
     }

@@ -11,13 +11,8 @@ public class PriorityQueue {
         this.heap = new HuffmanNode[initialSize];
     }
 
-    public PriorityQueue() {
-        this.size = 0;
-        this.heap = new HuffmanNode[257];
-    }
-
     /**
-     * 
+     * Return lowest frequency node from queue
      * @return
      */
     public HuffmanNode poll() {

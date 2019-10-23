@@ -15,21 +15,25 @@ public class BitSet {
     }
 
     public void set(int index, boolean bit) {
-        if (index / 8 >= buffer.length) {
-            resize(index / 8);
+        int position = index / 8;
+
+        if (position >= buffer.length) {
+            resize(position);
         }
 
-        if (bit) {
-            this.buffer[index / 8] |= 1 << index;
-        } else {
-            this.buffer[index / 8] &= (1 << index) ^ 0xff;
-        }
+        int bytePosition = index - position * 8;
+        
+        this.buffer[position] = bit 
+            ? (byte) (this.buffer[position] | (1 << bytePosition)) 
+            : (byte) (this.buffer[position] & ~(1 << bytePosition));
 
         size = size <= index ? index + 1 : size;
     }
 
     public boolean get(int index) {
-        return (this.buffer[index / 8] & (1 << index)) != 0;
+        int position = index / 8;
+        int bytePosition = index - position * 8;
+        return ((this.buffer[position] >> bytePosition) & 1) == 1;
     }
 
     public void clear(int index) {
