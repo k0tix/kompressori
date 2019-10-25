@@ -33,12 +33,6 @@ public class HuffmanTest {
         assertArrayEquals(input, this.huffman.decode(encodedInput, tree));
     }
 
-    @Test
-    public void correctEncodingCodes() {
-        byte[] input = "aaaaabababssh".getBytes();
-        byte[] encodedInput = this.huffman.encode(input);
-    }
-
     /**
      * Calculates correct character frequencies
      */
@@ -57,12 +51,12 @@ public class HuffmanTest {
     public void buildCorrectHuffmanTree() {
         byte[] input = "TTTTaa ".getBytes();
 
-        HuffmanNode T = new HuffmanNode((byte) 'T', 4, null, null);
+        HuffmanNode t = new HuffmanNode((byte) 'T', 4, null, null);
         HuffmanNode a = new HuffmanNode((byte) 'a', 2, null, null);
         HuffmanNode space = new HuffmanNode((byte) ' ', 1, null, null);
 
         HuffmanNode node1 = new HuffmanNode((byte) 0, 3, a, space);
-        HuffmanNode root = new HuffmanNode((byte) 0, 7, T, node1);
+        HuffmanNode root = new HuffmanNode((byte) 0, 7, t, node1);
 
         int[] frequencies = this.huffman.getFrequencies(input);
         HuffmanNode buildTree = this.huffman.createHuffmanTree(frequencies);
