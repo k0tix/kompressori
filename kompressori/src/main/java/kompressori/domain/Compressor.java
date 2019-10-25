@@ -1,13 +1,9 @@
 package kompressori.domain;
 
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-
 import kompressori.huffman.Huffman;
 import kompressori.io.FileHandler;
 import kompressori.lzw.LZW;
-
-;
 
 /**
  * Class that combines compress algorithm operation logic
@@ -33,10 +29,9 @@ public class Compressor {
         
         if (algorithm.equals("huffman")) {
             byte[] data = this.huffmanEncode(input);
-            System.out.println(data);
             this.file.writeFile(filepath + ".huffman", data);
         } else if (algorithm.equals("lzw")) {
-            byte[] data = this.lzwEncode(input);
+            byte[] data = this.lzw.encode(input);
             this.file.writeFile(filepath + ".lzw", data);
         }  
     }
@@ -49,14 +44,19 @@ public class Compressor {
         byte[] data = this.file.readFile(filepath);
 
         if (filepath.contains("huffman")) {
-            this.file.writeFile(savepath, huffmanDecode(data));
+            this.file.writeFile(savepath, this.huffmanDecode(data));
         } else if (filepath.contains("lzw")) {
-            this.file.writeFile(savepath, lzwDecode(data));
+            this.file.writeFile(savepath, this.lzw.decode(data));
         } else {
             System.out.println("Not a valid file for decoding. Must end with .huffman or .lzw");
         }
     }
 
+    /**
+     * Encodes byte to input with Huffman encoding to byte array that can be stored in a file
+     * @param input
+     * @return
+     */
     public byte[] huffmanEncode(byte[] input) {
         int[] freq = this.huffman.getFrequencies(input);
         byte[] encodedInput = this.huffman.encode(input, freq);
@@ -71,6 +71,11 @@ public class Compressor {
         return buffer.array();
     }
 
+    /**
+     * Decodes Huffman encoded byte input from a stored file
+     * @param input
+     * @return
+     */
     public byte[] huffmanDecode(byte[] input) {
         ByteBuffer buffer = ByteBuffer.wrap(input);
         int freqSize = buffer.getInt();
@@ -86,14 +91,5 @@ public class Compressor {
         }
         
         return this.huffman.decode(encodedInput, this.huffman.createHuffmanTree(freq));
-    }
-
-    public byte[] lzwEncode(byte[] input) {
-        return this.lzw.encode(input);
-    }
-
-    public byte[] lzwDecode(byte[] input) {
-        byte[] decodedInput = this.lzw.decode(input);
-        return decodedInput;
     }
 }
