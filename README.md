@@ -23,3 +23,5 @@ A file compressor made with java for the tiralabra2019 course.
 [Usage guide](documentation/usage.md)
 
 [Implementation document](documentation/implementation.md)
+
+[Testing document](documentation/testing.md)

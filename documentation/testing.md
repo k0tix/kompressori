@@ -9,7 +9,9 @@ I have tests for data structures and algorithms that do not depend on javas data
 Not much testing here but the program writes and reads from the filepath it is given.
 
 ### Algorithm testing
-In classes [LZWTest](https://github.com/k0tix/kompressori/blob/master/kompressori/src/test/java/kompressori/LZWTest.java) and [HuffmanTest](https://github.com/k0tix/kompressori/blob/master/kompressori/src/test/java/kompressori/HuffmanTest.java)
+All the algorithms are tested with JUnit test located in [datastructures](../kompressori/src/test/java/kompressori/datastructures/), [huffman](../kompressori/src/test/java/kompressori/huffman/), [lzw](../kompressori/src/test/java/kompressori/lzw)
+
+The domain class does not currently have any test as the JUnit instace ran out of memory for some reason and could'nt run the tests. I tried fixing this in the `pom.xml` file but it didn't help.
 
 ### Performance testing
 Algorithms were tested with different lenght input data (files from [cantebury corpus](http://corpus.canterbury.ac.nz)). All file sizes are in bytes.
