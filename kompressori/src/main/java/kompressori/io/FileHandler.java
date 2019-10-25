@@ -2,6 +2,7 @@ package kompressori.io;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
 /**
@@ -37,5 +38,19 @@ public class FileHandler {
         }
 
         return data;
+    }
+
+    /**
+     * Check if filepath is valid
+     * @param path
+     * @return
+     */
+    public boolean isValidPath(String filepath) {
+        try {
+            Paths.get(filepath);
+        } catch (InvalidPathException | NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 }

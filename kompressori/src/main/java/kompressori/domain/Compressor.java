@@ -25,6 +25,10 @@ public class Compressor {
      * @param algorithm
      */
     public void encode(String filepath, String algorithm) {
+        if (this.file.isValidPath(filepath)) {
+            return;
+        }
+        
         byte[] input = this.file.readFile(filepath);
         
         if (algorithm.equals("huffman")) {
