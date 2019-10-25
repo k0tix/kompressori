@@ -83,10 +83,10 @@ public class ByteArray {
      * @return
      */
     public int getInt(int index) {
-        int i = ((this.array[index] & 0xFF) << 24) | 
-            ((this.array[index + 1] & 0xFF) << 16) | 
-            ((this.array[index + 2] & 0xFF) << 8 ) | 
-            ((this.array[index + 3] & 0xFF) << 0 );
+        int i = ((this.array[index] & 0xFF) << 24) |
+            ((this.array[index + 1] & 0xFF) << 16) |
+            ((this.array[index + 2] & 0xFF) << 8) |
+            ((this.array[index + 3] & 0xFF) << 0);
 
         return i;
     }
@@ -100,10 +100,10 @@ public class ByteArray {
             return -1;
         }
 
-        int i = ((this.array[pointer] & 0xFF) << 24) | 
-            ((this.array[pointer + 1] & 0xFF) << 16) | 
-            ((this.array[pointer + 2] & 0xFF) << 8 ) | 
-            ((this.array[pointer + 3] & 0xFF) << 0 );
+        int i = ((this.array[pointer] & 0xFF) << 24) |
+            ((this.array[pointer + 1] & 0xFF) << 16) |
+            ((this.array[pointer + 2] & 0xFF) << 8) |
+            ((this.array[pointer + 3] & 0xFF) << 0);
 
         this.pointer += 4;
         return i;

@@ -16,7 +16,9 @@ public class PriorityQueue {
      * @return
      */
     public HuffmanNode poll() {
-        if (size < 1) return null;
+        if (size < 1) { 
+            return null;
+        }
 
         HuffmanNode firstNode = this.heap[1];
         this.heap[1] = heap[this.size];
@@ -58,8 +60,10 @@ public class PriorityQueue {
      * @param position
      */
     public void heapify(int position) {
-        if (position > this.size) return;
-        
+        if (position > this.size) {
+            return;
+        }
+
         int left = leftChild(position);
         int right = rightChild(position);
         int smallest = -1;
@@ -84,7 +88,9 @@ public class PriorityQueue {
      * @param b
      */
     public void swap(int a, int b) {
-        if (a == b) return;
+        if (a == b) {
+            return;
+        } 
         HuffmanNode temporary = this.heap[a];
         this.heap[a] = this.heap[b];
         this.heap[b] = temporary;
@@ -130,7 +136,7 @@ public class PriorityQueue {
     }
 
     public void print() {
-        for(HuffmanNode n : heap) {
+        for (HuffmanNode n : heap) {
             System.out.println(n);
         }
     }
