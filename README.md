@@ -1,5 +1,7 @@
 # Kompressori
 
+![logo](documentation/kompress.png)
+
 A file compressor made with java for the tiralabra2019 course.
 
 ## Weekly reports
