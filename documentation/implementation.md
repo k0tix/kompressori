@@ -23,9 +23,13 @@ Start from the trees root. If the next bit int the input is 1 take the roots rig
 
 Currently the program doesnt store the tree in the encoded file, but only stores the character frequencies as an integer array. This is not the most efficient way and wastes space.
 
+Huffmans time complexity is O(n log n) as it traverses the Huffman tree to create codes.
+
 ## LZW
 
 LZW or Lempel-Ziv-Welch is a compressiong algorithm that uses a dictionary to store references to already occured words. This way if a word is repeated many times we only need to store it once and then just point to the reference if the word occuress again. At the start the dictionary contains only the 255 different byte values. All dictionary entries after that contain only the reference index to the first words and then the last byte. Many implementations use some kind of HashMap for the dictionary and my implementation uses a tree based structure. To check if an entry is stored, it just traverses the tree down (based on the searched entry) and either hits an node with the entry or doesn't.
+
+LZWs time complexity is O(n log n) as it traverses the tree to find dictionary values. With a hashmap implementation it would be O(n)
 
 ## Improvements and fixes
 
