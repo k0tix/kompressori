@@ -5,6 +5,9 @@ The program is tested manually by hand and automatically with JUnit tests that t
 ## Unit testing
 I have tests for data structures and algorithms that do not depend on javas data structures
 
+To run the unit tests just run
+`mvn test`
+
 ### I/O testing
 Not much testing here but the program writes and reads from the filepath it is given.
 
