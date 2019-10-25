@@ -14,7 +14,7 @@ In classes [LZWTest](https://github.com/k0tix/kompressori/blob/master/kompressor
 ### Performance testing
 Algorithms were tested with different lenght input data (files from [cantebury corpus](http://corpus.canterbury.ac.nz)). All file sizes are in bytes.
 
-Filename | Original filesize | Huffman size | Huffman ratio | Huffman encoding | Huffman decoding | LZW size | LZW ratio | LZW encoding | LZW decoding
+Filename | Original size | Huffman size | Huffman ratio | Huffman encoding | Huffman decoding | LZW size | LZW ratio | LZW encoding | LZW decoding
 --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
 xargs1 | 4 227 | 3631 | 85.90 % | 1 ms | 1 ms | 3 584 | 84.79 % | 2 ms | 1 ms
 cp.html | 24 603 | 17 228 | 70.02 % | 40 ms | 20 ms | 14 948 | 60.76 % | 52 ms | 20 ms
