@@ -29,10 +29,6 @@ public class HuffmanNode {
         return this.frequency;
     }
 
-    public void incrementFrequency() {
-        this.frequency += 1;
-    }
-
     public HuffmanNode getLeft() {
         return this.left;
     }

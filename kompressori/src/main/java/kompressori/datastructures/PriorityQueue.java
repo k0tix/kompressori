@@ -2,6 +2,10 @@ package kompressori.datastructures;
 
 import kompressori.huffman.HuffmanNode;
 
+/**
+ * A PriorityQueue class that orders its HuffmanNode elements
+ * by frequency from lowest to highest
+ */
 public class PriorityQueue {
     private HuffmanNode[] heap;
     private int size;
@@ -123,21 +127,11 @@ public class PriorityQueue {
         return position / 2;
     }
 
-    public boolean isLeaf(int position) { 
-        return position >= (size / 2) && position <= size;
-    } 
-
     /**
      * Get size of the PriorityQueue
      * @return
      */
     public int size() {
         return this.size;
-    }
-
-    public void print() {
-        for (HuffmanNode n : heap) {
-            System.out.println(n);
-        }
     }
 }

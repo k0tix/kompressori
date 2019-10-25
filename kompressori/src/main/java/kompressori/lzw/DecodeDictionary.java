@@ -2,6 +2,9 @@ package kompressori.lzw;
 
 import kompressori.datastructures.ByteArray;
 
+/**
+ * LZW decoding dictionary that holds a list of ByteArrays
+ */
 public class DecodeDictionary {
     private int size;
     private ByteArray[] list;
@@ -17,6 +20,9 @@ public class DecodeDictionary {
         return this.size;
     }
 
+    /**
+     * Resets the dictionary keeping the initial values
+     */
     public void reset() {
         this.size = 256;
     }
@@ -32,6 +38,9 @@ public class DecodeDictionary {
         this.list[this.size++] = prefix;
     }
 
+    /**
+     * Resize array to hold more values
+     */
     private void resize() {
         ByteArray[] resizedList = new ByteArray[this.size * 2];
         for (int i = 0; i < this.size; i++) {
@@ -40,6 +49,9 @@ public class DecodeDictionary {
         this.list = resizedList;
     }
 
+    /**
+     * Initialize starting values for dictionary
+     */
     public void initialize() {        
         for (int i = 0; i < 256; i++) {
             ByteArray prefix = new ByteArray(256);

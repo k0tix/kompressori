@@ -92,4 +92,12 @@ public class Compressor {
         
         return this.huffman.decode(encodedInput, this.huffman.createHuffmanTree(freq));
     }
+
+    public byte[] lzwEncode(byte[] input) {
+        return this.lzw.encode(input);
+    }
+
+    public byte[] lzwDecode(byte[] encodedInput) {
+        return this.lzw.decode(encodedInput);
+    }
 }
